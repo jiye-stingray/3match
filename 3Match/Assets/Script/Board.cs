@@ -26,8 +26,13 @@ public class Board : MonoBehaviour
             {
                 var tile = _rows[y]._tiles[x];
 
-                Tiles[x, y] = tile;
+                tile.X = x;
+                tile.Y = y;
+
+
                 tile.Item = ItemDatabase.Items[Random.Range(0,ItemDatabase.Items.Length)];
+                Tiles[x, y] = tile;
+
             }
         }
     }
