@@ -21,4 +21,9 @@ public class Tile : MonoBehaviour
 
     public Image _icon;
     public Button _button;
+
+    private void Start()
+    {
+        _button.onClick.AddListener(() => Board.Instance.Select(this));
+    }
 }

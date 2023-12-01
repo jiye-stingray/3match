@@ -14,6 +14,9 @@ public class Board : MonoBehaviour
     public int Width => Tiles.GetLength(0);
     public int Height => Tiles.GetLength(1);
 
+    private readonly List<Tile> _selectionTileList = new List<Tile>();
+        
+
     private void Awake() => Instance = this;
 
     private void Start()
@@ -35,6 +38,18 @@ public class Board : MonoBehaviour
 
             }
         }
+    }
+
+    public void Select(Tile tile)
+    {
+        if(!_selectionTileList.Contains(tile)) _selectionTileList.Add(tile);
+
+
+        if (_selectionTileList.Count < 2) return;
+
+        Debug.Log($"Selected Tiles at ({_selectionTileList[0].X},{_selectionTileList[0].Y} and {_selectionTileList[1].X},{_selectionTileList[1].Y})");
+
+        _selectionTileList.Clear();
     }
 
 }
