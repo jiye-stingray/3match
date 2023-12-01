@@ -43,7 +43,7 @@ public class Board : MonoBehaviour
         }
     }
 
-    public void Select(Tile tile)
+    public async void Select(Tile tile)
     {
         if(!_selectionTileList.Contains(tile)) _selectionTileList.Add(tile);
 
@@ -51,6 +51,8 @@ public class Board : MonoBehaviour
         if (_selectionTileList.Count < 2) return;
 
         Debug.Log($"Selected Tiles at ({_selectionTileList[0].X},{_selectionTileList[0].Y} and {_selectionTileList[1].X},{_selectionTileList[1].Y})");
+
+        await Swap(_selectionTileList[0], _selectionTileList[1]);
 
         _selectionTileList.Clear();
     }
